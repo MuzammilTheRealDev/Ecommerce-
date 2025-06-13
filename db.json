@@ -1,0 +1,139 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+      "price": 109.95,
+      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "rating": {
+        "rate": 3.9,
+        "count": 120
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "ailsjolwef7897",
+      "name": "John Doe",
+      "email": "john@doe.com",
+      "password": 12345678
+    },
+    {
+      "id": "wn60aW6elaomisBINcjy7",
+      "name": "Thor Bolton",
+      "email": "wabewogeh@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "GvFLshfaGLKhHZA-r6_4g",
+      "name": "Azalia Mclaughlin",
+      "email": "hykumyg@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "79oIys-wz4dq1YjJms2Bp",
+      "name": "Lydia Buckner",
+      "email": "ryloquky@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "0tUeiAbXZBSe5boZrm606",
+      "name": "Charde Myers",
+      "email": "molubasefa@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "jc8wICBQzeRrpXc2qzTsd",
+      "name": "Alexandra Avery",
+      "email": "mabu@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "Z9pGkHHdnCO2KufoH2l-A",
+      "name": "Juliet Mason",
+      "email": "cidoc@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "8ZA-u0_DSdalgQoF9qBzt",
+      "name": "Luke Meyer",
+      "email": "kisyzylyse@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "v6L1qvO-GPxcTwwghTY9M",
+      "name": "Catherine Glenn",
+      "email": "pizezuqiqo@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "QNerOYAOOdImS880wJICQ",
+      "name": "Rama Hayes",
+      "email": "hogybiloh@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "XLMGIrSo-X0ZzVzrAQcI2",
+      "name": "Darryl Scott",
+      "email": "rihewi@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "mELN3Y3ZsGabB_rECoTvG",
+      "name": "Melvin Little",
+      "email": "dobih@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "jCJ9btUNrPWQksrK_w1XV",
+      "name": "Plato Pena",
+      "email": "zexo@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "5DWj0mk8jZUn-O1TGHO-L",
+      "name": "Ryder Joyner",
+      "email": "lacyhem@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "r3hxXulXc971mU1ax8ns5",
+      "name": "Kristen Fowler",
+      "email": "cogekadoce@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "Jwel24jylm2vAQ1yIYfRL",
+      "name": "Robert Kemp",
+      "email": "rocun@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "confirmPassword": "Pa$$w0rd!",
+      "isAdmin": false
+    }
+  ],
+  "cart": []
+}

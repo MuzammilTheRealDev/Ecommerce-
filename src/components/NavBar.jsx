@@ -1,17 +1,29 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { CartIcon, CubeIcon, HomeIcon, LoginIcon, RegisterIcon } from "./icon";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const user = useSelector((state) => state.user.users)
+    console.log(user);
+
 
     const navLinks = [
         { name: "Home", to: "/", icon: HomeIcon },
         { name: "Products", to: "/products", icon: CubeIcon },
         { name: "Cart", to: "/cart", icon: CartIcon },
-        { name: "Login", to: "/login", icon: LoginIcon },
-        { name: "Register", to: "/register", icon: RegisterIcon },
+        ...(!user
+            ? [
+                { name: "Login", to: "/login", icon: LoginIcon },
+                { name: "Register", to: "/register", icon: RegisterIcon },
+            ]
+            : [
+                { name: "Create Product", to: "/admin/create-product", icon: RegisterIcon },
+                { name: "Logout", to: "/logout", icon: LoginIcon },
+            ]),
     ];
+
 
     return (
         <nav className="bg-[#0f172a] text-[#f1f5f9]">

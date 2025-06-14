@@ -14,18 +14,18 @@ export default function Register() {
   const password = watch('password')
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const onSubmission = (data) => {
+  const onSubmission = async (data) => {
     try {
       setLoading(true)
       console.log(data);
+      delete data.confirmPassword;
       const user = {
         id: nanoid(),
         ...data,
         isAdmin:false
       }
-      delete data.confirmPassword;
 
-      dispatch(asyncRegisterUser(user))
+      await dispatch(asyncRegisterUser(user))
       toast.success('User Registered Successfully')
       reset();
       navigate('/login')

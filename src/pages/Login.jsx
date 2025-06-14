@@ -1,14 +1,16 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { asyncLoginUser } from "../store/actions/UserAction";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const dispatch = useDispatch()
   const onSubmission = (data) => {
     console.log(data);
+    dispatch(asyncLoginUser(data))
 
     reset();
-    
-
   }
 
   return (
@@ -21,7 +23,7 @@ export default function Login() {
           {/* Email */}
           <div className="relative">
             <input
-              {...register('email')}
+              {...register('email', { required: 'Email is required' })}
               type="email"
               id="email"
               placeholder=" "
@@ -33,12 +35,13 @@ export default function Login() {
             >
               Email
             </label>
+            {errors.email && <p className="text-red-400 mt-1 text-sm">{errors.email.message}</p>}
           </div>
 
           {/* Password */}
           <div className="relative">
             <input
-              {...register('password')}
+              {...register('password', { required: 'Password is Required' })}
               type="password"
               id="password"
               placeholder=" "
@@ -50,6 +53,7 @@ export default function Login() {
             >
               Password
             </label>
+            {errors.password && <p className="text-red-400 mt-1 text-sm">{errors.password.message}</p>}
           </div>
           <button className="bg-accent w-full py-2 rounded text-white font-semibold hover:bg-emerald-600 transition-all duration-300">Login</button>
           <p className="text-sm text-center text-text text-opacity-70">

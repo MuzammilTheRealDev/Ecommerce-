@@ -1,12 +1,25 @@
-import React from 'react'
+import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { asyncCreateProduct } from '../../../store/actions/ProductAction';
 
 const Create = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmission = (data) => {
-        console.log(data);
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const onSubmission = async (data) => {
+        try {
+            data.id = nanoid();
+            data.price = parseFloat(data.price);
+            await dispatch(asyncCreateProduct(data));
+            reset();
+            navigate('/products');
+        } catch (error) {
+            console.error("Product creation failed", error);
+        }
     }
+
     return (
         <div className="min-h-screen bg-background text-text px-4 md:px-8 py-10">
             <div className="max-w-4xl mx-auto bg-cad p-8 rounded-xl shadow-xl">
@@ -124,7 +137,7 @@ const Create = () => {
                             type="submit"
                             className="w-full bg-accent hover:bg-emerald-600 text-white font-semibold py-3 rounded-md transition-all duration-300"
                         >
-                            Save Product
+                            Create Product
                         </button>
                     </div>
                 </form>

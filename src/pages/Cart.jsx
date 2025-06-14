@@ -1,6 +1,6 @@
 export default function Cart() {
     return (
-        <div className="bg-background text-text p-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="bg-background text-text p-8 grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[70vh] pt-20">
             <div className="lg:col-span-2">
                 <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
                 <table className="w-full text-left">

@@ -1,12 +1,28 @@
 {
   "products": [
     {
-      "id": "1",
-      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-      "price": 109.95,
-      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-      "category": "men's clothing",
-      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+      "id": "AQtqdwxoFKwc1IRCi7Z7s",
+      "title": "Omnis labore ullam u",
+      "price": "43",
+      "category": "women's clothing",
+      "url": "https://www.wuke.us",
+      "description": "Sed nisi quod dolore"
+    },
+    {
+      "id": "juJ2QkakLCLnAgD6auTj9",
+      "title": "Veritatis obcaecati ",
+      "price": 780,
+      "category": "women's clothing",
+      "url": "https://images.unsplash.com/photo-1561816544-21ecbffa09a3",
+      "description": "Voluptas commodi ut "
+    },
+    {
+      "id": "mL04w-QFrmxv8oL6mplTQ",
+      "title": "Consequatur adipisi",
+      "price": 807,
+      "category": "electronics",
+      "url": "https://images.unsplash.com/photo-1561816544-23ecbffa09a3",
+      "description": "Reprehenderit pariat"
     }
   ],
   "users": [

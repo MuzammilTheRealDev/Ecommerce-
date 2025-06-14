@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CartIcon, CubeIcon, HomeIcon, LoginIcon, RegisterIcon } from "./icon";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncLogoutUser } from "../store/actions/UserAction";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const user = useSelector((state) => state.user.users)
-    console.log(user);
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const logoutHandler = () => {
+        dispatch(asyncLogoutUser());
+        navigate('/login')
+        toast.success('User Logout Successfully')
+    }
 
     const navLinks = [
         { name: "Home", to: "/", icon: HomeIcon },
@@ -20,7 +27,7 @@ const NavBar = () => {
             ]
             : [
                 { name: "Create Product", to: "/admin/create-product", icon: RegisterIcon },
-                { name: "Logout", to: "/logout", icon: LoginIcon },
+                { name: "Logout", to: "#", icon: LoginIcon, onClick: logoutHandler },
             ]),
     ];
 
@@ -68,10 +75,11 @@ const NavBar = () => {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex space-x-6 items-center">
-                    {navLinks.map(({ name, to, icon: Icon }) => (
+                    {navLinks.map(({ name, to, icon: Icon, onClick }) => (
                         <NavLink
                             key={to}
                             to={to}
+                            onClick={onClick}
                             className={({ isActive }) =>
                                 `flex items-center gap-1 hover:text-indigo-400 transition-all duration-300 ${isActive ? "text-indigo-400" : "text-[#f1f5f9]/90"
                                 }`
@@ -87,11 +95,15 @@ const NavBar = () => {
             {/* Mobile Menu */}
             {isOpen && (
                 <div className="md:hidden px-4 pb-4 space-y-3">
-                    {navLinks.map(({ name, to, icon: Icon }) => (
+                    {navLinks.map(({ name, to, icon: Icon, onClick }) => (
                         <NavLink
                             key={to}
                             to={to}
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => {
+                                setIsOpen(false);
+                                if (onClick) onClick()
+                            }
+                            }
                             className={({ isActive }) =>
                                 `flex items-center gap-2 py-2 border-b border-slate-700 hover:text-indigo-400 transition-all duration-300 ${isActive ? "text-indigo-400" : "text-[#f1f5f9]/90"
                                 }`

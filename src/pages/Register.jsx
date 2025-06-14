@@ -1,5 +1,3 @@
-console.log("Register component loaded");
-
 import { nanoid } from "nanoid";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -41,7 +39,7 @@ export default function Register() {
     <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen bg-background text-text">
       {/* Left Side */}
       <div className="bg-gradient-to-br from-primary to-accent flex items-center justify-center p-12">
-        <h1 className="text-4xl font-bold text-white">Create Your Account</h1>
+        <h1 className="text-4xl font-bold text-white text-center">Create Your Account</h1>
       </div>
 
       {/* Right Side - Register Form */}

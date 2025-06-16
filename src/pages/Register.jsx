@@ -8,47 +8,58 @@ import { asyncRegisterUser } from "../store/actions/UserAction";
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
-  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
-  const password = watch('password')
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const password = watch("password");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onSubmission = async (data) => {
     try {
-      setLoading(true)
+      setLoading(true);
       console.log(data);
       delete data.confirmPassword;
       const user = {
         id: nanoid(),
         ...data,
-        isAdmin:false
-      }
+        isAdmin: false,
+      };
 
-      await dispatch(asyncRegisterUser(user))
-      toast.success('User Registered Successfully')
+      await dispatch(asyncRegisterUser(user));
+      toast.success("User Registered Successfully");
       reset();
-      navigate('/login')
+      navigate("/login");
     } catch (error) {
-      toast.error('Registration failed')
+      toast.error("Registration failed");
       console.log(error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen bg-background text-text">
       {/* Left Side */}
       <div className="bg-gradient-to-br from-primary to-accent flex items-center justify-center p-12">
-        <h1 className="text-4xl font-bold text-white text-center">Create Your Account</h1>
+        <h1 className="text-4xl font-bold text-white text-center">
+          Create Your Account
+        </h1>
       </div>
 
       {/* Right Side - Register Form */}
       <div className="p-8 flex flex-col justify-center">
-        <form onSubmit={handleSubmit(onSubmission)} className="space-y-6 w-full max-w-md mx-auto">
+        <form
+          onSubmit={handleSubmit(onSubmission)}
+          className="space-y-6 w-full max-w-md mx-auto"
+        >
           {/* Name */}
           <div className="relative">
             <input
-              {...register('name', { required: "Name is required" })}
+              {...register("name", { required: "Name is required" })}
               type="text"
               id="name"
               placeholder=" "
@@ -56,26 +67,29 @@ export default function Register() {
             />
             <label
               htmlFor="name"
-              className="absolute left-3 top-3 text-text text-opacity-70 peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm transition-all duration-300 peer-focus:top-0 peer-focus:text-xs"
+              className="absolute left-3 top-3 text-text text-opacity-70 
+                peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm 
+                peer-focus:top-0 peer-focus:text-xs 
+                peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-xs 
+                transition-all duration-300"
             >
               Full Name
             </label>
-            {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
-
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name.message}</p>
+            )}
           </div>
 
           {/* Email */}
           <div className="relative">
             <input
-              {...register('email',
-                {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^\S+@\S+$/i,
-                    message: "Enter a valid email",
-                  },
-                })
-              }
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Enter a valid email",
+                },
+              })}
               type="email"
               id="email"
               placeholder=" "
@@ -83,24 +97,29 @@ export default function Register() {
             />
             <label
               htmlFor="email"
-              className="absolute left-3 top-3 text-text text-opacity-70 peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm transition-all duration-300 peer-focus:top-0 peer-focus:text-xs"
+              className="absolute left-3 top-3 text-text text-opacity-70 
+                peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm 
+                peer-focus:top-0 peer-focus:text-xs 
+                peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-xs 
+                transition-all duration-300"
             >
               Email
             </label>
-            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email.message}</p>
+            )}
           </div>
 
           {/* Password */}
           <div className="relative">
             <input
-              {...register('password',
-                {
-                  required: "Password is required",
-                  minLength: {
-                    value: 6,
-                    message: "Password must be atlest 6 character"
-                  }
-                })}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
               type="password"
               id="password"
               placeholder=" "
@@ -108,23 +127,27 @@ export default function Register() {
             />
             <label
               htmlFor="password"
-              className="absolute left-3 top-3 text-text text-opacity-70 peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm transition-all duration-300 peer-focus:top-0 peer-focus:text-xs"
+              className="absolute left-3 top-3 text-text text-opacity-70 
+                peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm 
+                peer-focus:top-0 peer-focus:text-xs 
+                peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-xs 
+                transition-all duration-300"
             >
               Password
             </label>
-            {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password.message}</p>
+            )}
           </div>
 
           {/* Confirm Password */}
           <div className="relative">
             <input
-              {...register('confirmPassword',
-                {
-                  required: "Please confirm your password",
-                  validate: (value) =>
-                    value === password || "Passwords do not match"
-                })
-              }
+              {...register("confirmPassword", {
+                required: "Please confirm your password",
+                validate: (value) =>
+                  value === password || "Passwords do not match",
+              })}
               type="password"
               id="confirmPassword"
               placeholder=" "
@@ -132,16 +155,28 @@ export default function Register() {
             />
             <label
               htmlFor="confirmPassword"
-              className="absolute left-3 top-3 text-text text-opacity-70 peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm transition-all duration-300 peer-focus:top-0 peer-focus:text-xs"
+              className="absolute left-3 top-3 text-text text-opacity-70 
+                peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm 
+                peer-focus:top-0 peer-focus:text-xs 
+                peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:text-xs 
+                transition-all duration-300"
             >
               Confirm Password
             </label>
-            {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword.message}</p>}
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-sm">
+                {errors.confirmPassword.message}
+              </p>
+            )}
           </div>
 
           {/* Submit */}
-          <button type="submit" disabled={loading} className="bg-accent w-full py-2 rounded text-white font-semibold hover:bg-emerald-600 transition-all duration-300">
-            {loading ? "Registering..." : 'Register'}
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-accent w-full py-2 rounded text-white font-semibold hover:bg-emerald-600 transition-all duration-300"
+          >
+            {loading ? "Registering..." : "Register"}
           </button>
 
           <p className="text-sm text-center text-text text-opacity-70">

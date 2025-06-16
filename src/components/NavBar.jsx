@@ -1,20 +1,14 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { CartIcon, CubeIcon, HomeIcon, LoginIcon, RegisterIcon } from "./icon";
-import { useDispatch, useSelector } from "react-redux";
-import { asyncLogoutUser } from "../store/actions/UserAction";
-import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const user = useSelector((state) => state.user.users)
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const logoutHandler = () => {
-        dispatch(asyncLogoutUser());
-        navigate('/login')
-        toast.success('User Logout Successfully')
-    }
+
+
 
     const navLinks = [
         { name: "Home", to: "/", icon: HomeIcon },
@@ -26,8 +20,10 @@ const NavBar = () => {
                 { name: "Register", to: "/register", icon: RegisterIcon },
             ]
             : [
-                { name: "Create Product", to: "/admin/create-product", icon: RegisterIcon },
-                { name: "Logout", to: "#", icon: LoginIcon, onClick: logoutHandler },
+                ...(user?.isAdmin ?
+                    [{ name: "Create Product", to: "/admin/create-product", icon: RegisterIcon }] : []
+                ),
+                { name: "Setting", to: "/user-profile", icon: RegisterIcon },
             ]),
     ];
 
@@ -75,11 +71,10 @@ const NavBar = () => {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex space-x-6 items-center">
-                    {navLinks.map(({ name, to, icon: Icon, onClick }) => (
+                    {navLinks.map(({ name, to, icon: Icon }) => (
                         <NavLink
                             key={to}
                             to={to}
-                            onClick={onClick}
                             className={({ isActive }) =>
                                 `flex items-center gap-1 hover:text-indigo-400 transition-all duration-300 ${isActive ? "text-indigo-400" : "text-[#f1f5f9]/90"
                                 }`
@@ -95,13 +90,13 @@ const NavBar = () => {
             {/* Mobile Menu */}
             {isOpen && (
                 <div className="md:hidden px-4 pb-4 space-y-3">
-                    {navLinks.map(({ name, to, icon: Icon, onClick }) => (
+                    {navLinks.map(({ name, to, icon: Icon }) => (
                         <NavLink
                             key={to}
                             to={to}
                             onClick={() => {
                                 setIsOpen(false);
-                                if (onClick) onClick()
+
                             }
                             }
                             className={({ isActive }) =>

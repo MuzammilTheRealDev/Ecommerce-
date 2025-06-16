@@ -5,10 +5,11 @@ export const asyncCreateProduct = (product) => async (dispatch, getState) => {
     try {
         await axios.post('/products', product);
         await dispatch(asyncLoadProduct())
+        return true
 
     } catch (error) {
-        console.log(error);
-
+        console.log("Create Product Error:", error);
+        return false
     }
 
 }
@@ -28,20 +29,24 @@ export const asyncUpdateProduct = (id, product) => async (dispatch, getState) =>
     try {
         await axios.patch('/products/' + id, product)
         dispatch(asyncLoadProduct())
+        return true
+
     } catch (error) {
         console.log(error);
-
+        return false
     }
 
 }
 
 export const asyncDeleteProduct = (id) => async (dispatch, getState) => {
     try {
-        await axios.delete('/products/'+ id)
+        await axios.delete('/products/' + id)
         dispatch(asyncLoadProduct());
+        return true
+
     } catch (error) {
         console.log(error);
-
+        return false
     }
 
 }

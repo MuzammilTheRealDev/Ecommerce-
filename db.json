@@ -23,20 +23,78 @@
       "category": "electronics",
       "url": "https://images.unsplash.com/photo-1561816544-23ecbffa09a3",
       "description": "Reprehenderit pariat"
+    },
+    {
+      "id": "jdTy4Lf4wZBf34fpyjbrd",
+      "title": "Iste et omnis facere",
+      "price": 249,
+      "category": "women's clothing",
+      "url": "https://www.gagymyjat.co.uk",
+      "description": "Iste aut ex et repre"
     }
   ],
   "users": [
-    {
-      "id": "ailsjolwef7897",
-      "name": "John Doe",
-      "email": "john@doe.com",
-      "password": 12345678
-    },
     {
       "id": "o76_Ztf9WEa4rYYYGdArT",
       "name": "admin",
       "email": "admin@mark.com",
       "password": "12345678",
+      "isAdmin": false
+    },
+    {
+      "id": "uccyi0Kb0Mv2wrdptjHEm",
+      "name": "Donovan Allen",
+      "email": "kehubu@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "P59FyxiVkc6DdwBeghl1U",
+      "name": "Hamish Valencia",
+      "email": "bysulab@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "H-YLM3GVm_22Lxd214xRH",
+      "name": "Nicole Spence",
+      "email": "cijomyqaq@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "-zH-aProaz6Wn5LfjHfhc",
+      "name": "Joshua Bowers",
+      "email": "nylozacute@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "aOvVsTedfp_zyD0E1v73l",
+      "name": "Amos Berger",
+      "email": "bogof@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "GkfsxpKu5TgU_yNKAubfK",
+      "name": "Walter Freeman",
+      "email": "kifuxehab@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "O8Z4zGKtpf8CyC_nah0B1",
+      "name": "Harper Hubbard",
+      "email": "bybyxad@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "isAdmin": false
+    },
+    {
+      "id": "XnU8ariZk4KzaR3cAmfFn",
+      "name": "Oprah Skinner",
+      "email": "teve@mailinator.com",
+      "password": "Pa$$w0rd!",
       "isAdmin": false
     }
   ],

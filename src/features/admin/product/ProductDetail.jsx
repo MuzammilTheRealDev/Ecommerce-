@@ -11,8 +11,6 @@ export default function ProductDetail() {
     const { id } = useParams();
     const product = products?.find((product) => product.id === id)
     const user = useSelector((state) => state.user.users)
-    console.log(user);
-
 
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -29,12 +27,17 @@ export default function ProductDetail() {
     const onSubmission = async (data) => {
         try {
             data.price = parseFloat(data.price);
-            await dispatch(asyncUpdateProduct(id, data));
-            toast.success('Product Updated Successfully')
+            const success = await dispatch(asyncUpdateProduct(id, data));
+            if(success){
+                toast.success('Product Updated Successfully')
+            }else{
+            console.error("Product updation failed");
+
+            }
             // reset();
             // navigate('/products');
         } catch (error) {
-            console.error("Product creation failed", error);
+            console.error("Product updation failed", error);
         }
     }
 
@@ -166,18 +169,6 @@ export default function ProductDetail() {
                             </label>
                             {errors.url && <p className="text-red-400 mt-1 text-sm">{errors.url.message}</p>}
                         </div>
-
-                        {/* Image Preview */}
-                        {/* <div className="md:col-span-2">
-                        <h2 className="text-sm text-text text-opacity-70 mb-2">Image Preview:</h2>
-                        <div className="w-full h-64 bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden">
-                            <img
-                                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                                alt="Product Preview"
-                                className="object-contain h-full"
-                            />
-                        </div>
-                    </div> */}
 
                         {/* Description */}
                         <div className="relative md:col-span-2">

@@ -9,10 +9,13 @@ import { asyncLoadProduct } from './store/actions/ProductAction'
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(asyncCurrentUser())
+    const localUser = localStorage.getItem('user');
+    if (localUser) {
+      dispatch(asyncCurrentUser());
+    }
     dispatch(asyncLoadProduct())
 
-  })
+  },[dispatch])
   return (
     <>
       <NavBar />

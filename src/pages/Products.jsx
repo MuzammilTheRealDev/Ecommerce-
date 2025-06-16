@@ -8,6 +8,8 @@ export default function Products() {
     const renderProduct = product.map((data) => {
         return <ProductCard key={data.id} product={data} />
     })
+    
+    if (!product) return <div className="text-center p-10">Product not found.</div>
 
     return product.length > 0 ? (
         <div className="bg-background text-text flex">

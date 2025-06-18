@@ -1,61 +1,69 @@
 import { Route, Routes } from 'react-router-dom'
-import Login from '../pages/Login'
-import Register from '../pages/Register'
-import Home from '../pages/Home'
-import PageNotFound from '../components/PageNotFound'
-import Products from '../pages/Products'
-import Cart from '../pages/Cart'
-import CreateProduct from '../features/admin/product/Create'
-import UpdateProduct from '../features/admin/product/Update'
-import ProductDetail from '../features/admin/product/ProductDetail'
-import Profile from '../features/user/Profile'
+import { lazy, Suspense } from 'react'
+const Login = lazy(() => import('../pages/Login'))
+const Register = lazy(() => import('../pages/Register'))
+const Home = lazy(() => import('../pages/Home'))
+const PageNotFound = lazy(() => import('../components/PageNotFound'))
+const Products = lazy(() => import('../pages/Products'))
+const Cart = lazy(() => import('../pages/Cart'))
+const CreateProduct = lazy(() => import('../features/admin/product/Create'))
+const UpdateProduct = lazy(() => import('../features/admin/product/Update'))
+const ProductDetail = lazy(() => import('../features/admin/product/ProductDetail'))
+const Profile = lazy(() => import('../features/user/Profile'))
 import { PrivateRoute, PublicRoute } from './AuthWrapper'
 
 const MainRouting = () => {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/products' element={<Products />} />
-      <Route path='/cart' element={<Cart />} />
+    <Suspense fallback={<div className="text-center py-20 text-lg">Loading...</div>}>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/products' element={<Products />} />
 
 
-      <Route path='/admin/create-product' element={
-        <PrivateRoute>
-          <CreateProduct />
-        </PrivateRoute>
-      } />
-
-      <Route path='/product/detail/:id' element={
-        <PrivateRoute>
-          <ProductDetail />
-        </PrivateRoute>
-      } >
-        <Route path='update-product' element={
+        <Route path='/admin/create-product' element={
           <PrivateRoute>
-            <UpdateProduct />
+            <CreateProduct />
           </PrivateRoute>
         } />
-      </Route>
 
-      <Route path='/user-profile' element={
-        <PrivateRoute>
-          <Profile />
+        <Route path='/product/detail/:id' element={
+          <PrivateRoute>
+            <ProductDetail />
+          </PrivateRoute>
+        } >
+          <Route path='update-product' element={
+            <PrivateRoute>
+              <UpdateProduct />
+            </PrivateRoute>
+          } />
+        </Route>
 
-        </PrivateRoute>
-      } />
+        <Route path='/user-profile' element={
+          <PrivateRoute>
+            <Profile />
 
-      <Route path='/login' element={
-        <PublicRoute>
-          <Login />
-        </PublicRoute>
-      } />
-      <Route path='/register' element={
-        <PrivateRoute>
-          <Register />
-        </PrivateRoute>
-      } />
-      <Route path='*' element={<PageNotFound />} />
-    </Routes>
+          </PrivateRoute>
+        } />
+
+        <Route path='/cart' element={
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        } />
+
+        <Route path='/login' element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        } />
+        <Route path='/register' element={
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        } />
+        <Route path='*' element={<PageNotFound />} />
+      </Routes>
+    </Suspense>
   )
 }
 

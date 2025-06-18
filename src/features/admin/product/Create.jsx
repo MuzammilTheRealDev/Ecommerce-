@@ -23,7 +23,7 @@ const Create = () => {
     return (
         <div className="min-h-screen bg-background text-text px-4 md:px-8 py-10">
             <div className="max-w-4xl mx-auto bg-cad p-8 rounded-xl shadow-xl">
-                <h1 className="text-3xl font-bold mb-8 text-primary text-center">Add / Update Product</h1>
+                <h1 className="text-3xl font-bold mb-8 text-primary text-center">Add Product</h1>
 
                 <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit(onSubmission)}>
                     {/* Product Title */}
@@ -77,7 +77,7 @@ const Create = () => {
                         </select>
                         <label
                             htmlFor="category"
-                            className="absolute left-4 -top-2 text-sm bg-card px-1 text-text text-opacity-70"
+                            className="absolute left-4 -top-2 text-sm  px-1 text-text text-opacity-70"
                         >
                             Category
                         </label>
@@ -101,18 +101,6 @@ const Create = () => {
                         </label>
                         {errors.url && <p className="text-red-400 mt-1 text-sm">{errors.url.message}</p>}
                     </div>
-
-                    {/* Image Preview */}
-                    {/* <div className="md:col-span-2">
-                        <h2 className="text-sm text-text text-opacity-70 mb-2">Image Preview:</h2>
-                        <div className="w-full h-64 bg-slate-700 rounded-lg flex items-center justify-center overflow-hidden">
-                            <img
-                                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                                alt="Product Preview"
-                                className="object-contain h-full"
-                            />
-                        </div>
-                    </div> */}
 
                     {/* Description */}
                     <div className="relative md:col-span-2">

@@ -4,7 +4,6 @@ import { loadUser, removeUser } from "../reducers/UserSlice";
 
 export const asyncRegisterUser = (user) => async () => {
     try {
-
         const existing = await axios.get(`/users?email=${user.email}`)
         if (existing.data.length > 0) {
             throw new Error('User with this email already exists')
@@ -45,7 +44,6 @@ export const asyncLogoutUser = () => async (dispatch) => {
 
     } catch (error) {
         console.log(error);
-
     }
 }
 

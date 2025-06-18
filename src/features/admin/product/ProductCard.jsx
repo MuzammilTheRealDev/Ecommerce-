@@ -1,7 +1,31 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { asyncUpdateUser } from "../../../store/actions/UserAction";
+import { toast } from "react-toastify";
 
 export default function ProductCard({ product }) {
-  console.log(product);
+  const user = useSelector((state) => state.user.users)
+  const dispatch = useDispatch()
+
+  const addToCartHandler = (product) => {
+    const copyUser = { ...user , cart:[...user.cart] };
+    const cartCheck = copyUser?.cart?.findIndex((c) => c?.product?.id == product.id)
+    if (cartCheck == -1) {
+      copyUser.cart.push({
+        product,
+        quantity: 1,
+      })
+    } else {
+      copyUser.cart[cartCheck] = {
+        product,
+        quantity: copyUser.cart[cartCheck].quantity + 1
+      }
+    }
+    console.log(copyUser);
+    dispatch(asyncUpdateUser(user.id,copyUser))
+    toast.success('Product added to cart successfull')
+  }
+
   function truncateWords(str, num = 10) {
     const words = str.trim().split(/\s+/);
     return words.length > num ? words.slice(0, num).join(" ") + "..." : str;
@@ -16,7 +40,7 @@ export default function ProductCard({ product }) {
         {truncateWords(product.description, 10)}
       </p>
       <p className="text-accent font-bold">${product.price}</p>
-      <button className="bg-accent w-full py-2">Add to Cart</button>
+      <button onClick={() => addToCartHandler(product)} className="bg-accent w-full py-2">Add to Cart</button>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import { asyncCurrentUser } from './store/actions/UserAction'
 import { useDispatch } from 'react-redux'
-import { asyncLoadProduct } from './store/actions/ProductAction'
+// import { asyncLoadProduct } from './store/actions/ProductAction'
 
 const App = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const App = () => {
     if (localUser) {
       dispatch(asyncCurrentUser());
     }
-    dispatch(asyncLoadProduct())
+    // dispatch(asyncLoadProduct())
 
   },[dispatch])
   return (

@@ -13,17 +13,18 @@ const NavBar = () => {
     const navLinks = [
         { name: "Home", to: "/", icon: HomeIcon },
         { name: "Products", to: "/products", icon: CubeIcon },
-        { name: "Cart", to: "/cart", icon: CartIcon },
         ...(!user
             ? [
                 { name: "Login", to: "/login", icon: LoginIcon },
                 { name: "Register", to: "/register", icon: RegisterIcon },
             ]
             : [
+                { name: "Cart", to: "/cart", icon: CartIcon },
                 ...(user?.isAdmin ?
                     [{ name: "Create Product", to: "/admin/create-product", icon: RegisterIcon }] : []
                 ),
                 { name: "Setting", to: "/user-profile", icon: RegisterIcon },
+
             ]),
     ];
 

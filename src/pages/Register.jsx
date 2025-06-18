@@ -27,6 +27,7 @@ export default function Register() {
         id: nanoid(),
         ...data,
         isAdmin: false,
+        cart: []
       };
 
       await dispatch(asyncRegisterUser(user));
